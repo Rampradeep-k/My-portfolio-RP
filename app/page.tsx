@@ -3,67 +3,31 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 
-import {
-  FaNodeJs,
-  FaReact,
-  FaPython,
-  FaAws,
-  FaDocker,
-  FaNetworkWired,
-  FaBars,
-  FaTimes,
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaGitlab,
-  FaWindows
-} from "react-icons/fa";
-import {
-  SiTypescript,
-  SiPostgresql,
-  SiMongodb,
-  SiRedis,
-  SiGraphql,
-  SiKubernetes,
-  SiExpress,
-  SiMysql,
-  SiBootstrap,
-  SiTailwindcss,
-  SiHtml5,
-  SiPostman
-} from "react-icons/si";
-
-// Tech icons data with categories
+// Tech icons data with categories - using text labels instead of icons
 const techIcons = [
   // Backend
-  { name: "Node.js", icon: FaNodeJs, color: "text-green-600", category: "backend" },
-  { name: "Express.js", icon: SiExpress, color: "text-gray-600", category: "backend" },
-  // { name: "Python", icon: FaPython, color: "text-yellow-600", category: "backend" },
+  { name: "Node.js", label: "Node", color: "text-green-600", category: "backend" },
+  { name: "Express.js", label: "Express", color: "text-gray-600", category: "backend" },
   
   // Databases
-  { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-700", category: "database" },
-  { name: "MySQL", icon: SiMysql, color: "text-blue-600", category: "database" },
-  // { name: "MongoDB", icon: SiMongodb, color: "text-green-700", category: "database" },
-  { name: "Redis", icon: SiRedis, color: "text-red-600", category: "backend" },
+  { name: "PostgreSQL", label: "PostgreSQL", color: "text-blue-700", category: "database" },
+  { name: "MySQL", label: "MySQL", color: "text-blue-600", category: "database" },
+  { name: "Redis", label: "Redis", color: "text-red-600", category: "backend" },
   
   // Frontend
-  { name: "React", icon: FaReact, color: "text-blue-500", category: "frontend" },
-  { name: "TypeScript", icon: SiTypescript, color: "text-blue-700", category: "frontend" },
-  { name: "Bootstrap", icon: SiBootstrap, color: "text-purple-600", category: "frontend" },
-  { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-500", category: "frontend" },
-  { name: "HTML", icon: SiHtml5, color: "text-orange-600", category: "frontend" },
+  { name: "React", label: "React", color: "text-blue-500", category: "frontend" },
+  { name: "TypeScript", label: "TypeScript", color: "text-blue-700", category: "frontend" },
+  { name: "Bootstrap", label: "Bootstrap", color: "text-purple-600", category: "frontend" },
+  { name: "Tailwind CSS", label: "Tailwind", color: "text-cyan-500", category: "frontend" },
+  { name: "HTML", label: "HTML", color: "text-orange-600", category: "frontend" },
   
   // Tools & Cloud
-  // { name: "AWS", icon: FaAws, color: "text-orange-500", category: "tools" },
-  // { name: "Docker", icon: FaDocker, color: "text-blue-600", category: "tools" },
-  // { name: "Kubernetes", icon: SiKubernetes, color: "text-blue-700", category: "tools" },
-  // { name: "GraphQL", icon: SiGraphql, color: "text-pink-600", category: "tools" },
-  { name: "REST API", icon: FaNetworkWired, color: "text-purple-600", category: "backend" },
-  { name: "Postman", icon: SiPostman, color: "text-orange-600", category: "tools" },
+  { name: "REST API", label: "REST API", color: "text-purple-600", category: "backend" },
+  { name: "Postman", label: "Postman", color: "text-orange-600", category: "tools" },
   
   // Version Control & OS
-  { name: "GitLab", icon: FaGitlab, color: "text-orange-600", category: "tools" },
-  { name: "Windows", icon: FaWindows, color: "text-blue-600", category: "tools" },
+  { name: "GitLab", label: "GitLab", color: "text-orange-600", category: "tools" },
+  { name: "Windows", label: "Windows", color: "text-blue-600", category: "tools" },
 ];
 
 export default function Home() {
@@ -151,9 +115,9 @@ export default function Home() {
           className="fixed top-6 right-6 z-50 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-3 hover:bg-white/20 transition-all duration-300"
         >
           {isMenuOpen ? (
-            <FaTimes className="w-6 h-6" />
+            <span className="w-6 h-6 block">✕</span>
           ) : (
-            <FaBars className="w-6 h-6" />
+            <span className="w-6 h-6 block">☰</span>
           )}
         </button>
 
@@ -198,9 +162,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Quick Skills Overview */}
-       
-
               <div>
                 <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Work</h3>
                 <div className="space-y-1">
@@ -224,7 +185,7 @@ export default function Home() {
                     onClick={() => setIsMenuOpen(false)}
                     className="flex items-center gap-2 text-gray-800 hover:text-gray-900 transition duration-300 py-1"
                   >
-                    <FaGithub className="w-4 h-4" />
+                    <span>🔗</span>
                     GitHub
                   </a>
                   <a 
@@ -234,7 +195,7 @@ export default function Home() {
                     onClick={() => setIsMenuOpen(false)}
                     className="flex items-center gap-2 text-gray-800 hover:text-blue-700 transition duration-300 py-1"
                   >
-                    <FaLinkedin className="w-4 h-4" />
+                    <span>🔗</span>
                     LinkedIn
                   </a>
                   <a 
@@ -242,7 +203,7 @@ export default function Home() {
                     onClick={() => setIsMenuOpen(false)}
                     className="flex items-center gap-2 text-gray-800 hover:text-red-600 transition duration-300 py-1"
                   >
-                    <FaEnvelope className="w-4 h-4" />
+                    <span>✉</span>
                     Gmail
                   </a>
                 </div>
@@ -265,9 +226,7 @@ export default function Home() {
                     </>
                   ) : (
                     <>
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
+                      <span>📥</span>
                       Download Resume
                     </>
                   )}
@@ -403,22 +362,19 @@ export default function Home() {
 
           {/* Skills Grid */}
           <div className="grid grid-cols-2 items-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {filteredTechIcons.map((tech, index) => {
-              const IconComponent = tech.icon;
-              return (
-                <div
-                  key={index}
-                  className="group flex flex-col items-center p-6 rounded-2xl bg-white hover:bg-gradient-to-br hover:from-white hover:to-gray-50 transition-all duration-300 transform hover:-translate-y-2 shadow-sm hover:shadow-xl border border-gray-100 hover:border-gray-200"
-                >
-                  <div className={`text-4xl mb-4 ${tech.color} group-hover:scale-110 transition-transform duration-300`}>
-                    <IconComponent />
-                  </div>
-                  <span className="text-sm font-semibold text-gray-800 text-center group-hover:text-gray-900 transition-colors duration-300">
-                    {tech.name}
-                  </span>
+            {filteredTechIcons.map((tech, index) => (
+              <div
+                key={index}
+                className="group flex flex-col items-center p-6 rounded-2xl bg-white hover:bg-gradient-to-br hover:from-white hover:to-gray-50 transition-all duration-300 transform hover:-translate-y-2 shadow-sm hover:shadow-xl border border-gray-100 hover:border-gray-200"
+              >
+                <div className={`text-2xl font-bold mb-4 ${tech.color} group-hover:scale-110 transition-transform duration-300`}>
+                  {tech.label}
                 </div>
-              );
-            })}
+                <span className="text-sm font-semibold text-gray-800 text-center group-hover:text-gray-900 transition-colors duration-300">
+                  {tech.name}
+                </span>
+              </div>
+            ))}
           </div>
 
           {/* Empty State */}
@@ -470,7 +426,6 @@ export default function Home() {
       {/* Contact CTA */}
       <section id="contact" className="py-20 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
         <div className="container mx-auto px-6 text-center">
-          {/* <h2 className="text-4xl font-bold mb-6">Ready to Build Something Amazing?</h2> */}
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Let's discuss your project and how I can help bring your ideas to life with robust backend solutions.
           </p>

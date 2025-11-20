@@ -3,74 +3,35 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 
-import {
-  FaNodeJs,
-  FaReact,
-  FaPython,
-  FaAws,
-  FaDocker,
-  FaNetworkWired,
-  FaBars,
-  FaTimes,
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaGitlab,
-  FaWindows
-} from "react-icons/fa";
-import {
-  SiTypescript,
-  SiPostgresql,
-  SiMongodb,
-  SiRedis,
-  SiGraphql,
-  SiKubernetes,
-  SiExpress,
-  SiMysql,
-  SiBootstrap,
-  SiTailwindcss,
-  SiHtml5,
-  SiPostman
-} from "react-icons/si";
-
-// Tech icons data with categories
-const techIcons = [
-  // Backend
-  { name: "Node.js", icon: FaNodeJs, color: "text-green-600", category: "backend" },
-  { name: "Express.js", icon: SiExpress, color: "text-gray-600", category: "backend" },
-  // { name: "Python", icon: FaPython, color: "text-yellow-600", category: "backend" },
-  
-  // Databases
-  { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-700", category: "database" },
-  { name: "MySQL", icon: SiMysql, color: "text-blue-600", category: "database" },
-  // { name: "MongoDB", icon: SiMongodb, color: "text-green-700", category: "database" },
-  { name: "Redis", icon: SiRedis, color: "text-red-600", category: "backend" },
-  
-  // Frontend
-  { name: "React", icon: FaReact, color: "text-blue-500", category: "frontend" },
-  { name: "TypeScript", icon: SiTypescript, color: "text-blue-700", category: "frontend" },
-  { name: "Bootstrap", icon: SiBootstrap, color: "text-purple-600", category: "frontend" },
-  { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-500", category: "frontend" },
-  { name: "HTML", icon: SiHtml5, color: "text-orange-600", category: "frontend" },
-  
-  // Tools & Cloud
-  // { name: "AWS", icon: FaAws, color: "text-orange-500", category: "tools" },
-  // { name: "Docker", icon: FaDocker, color: "text-blue-600", category: "tools" },
-  // { name: "Kubernetes", icon: SiKubernetes, color: "text-blue-700", category: "tools" },
-  // { name: "GraphQL", icon: SiGraphql, color: "text-pink-600", category: "tools" },
-  { name: "REST API", icon: FaNetworkWired, color: "text-purple-600", category: "backend" },
-  { name: "Postman", icon: SiPostman, color: "text-orange-600", category: "tools" },
-  
-  // Version Control & OS
-  { name: "GitLab", icon: FaGitlab, color: "text-orange-600", category: "tools" },
-  { name: "Windows", icon: FaWindows, color: "text-blue-600", category: "tools" },
-];
-
 export default function Home() {
   const [isDownloading, setIsDownloading] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState<'all' | 'backend' | 'frontend' | 'database' | 'tools'>('all');
   const menuRef = useRef<HTMLDivElement>(null);
+
+  // Tech icons data with categories (text only - no icons)
+  const techIcons = [
+    { name: "Node.js", category: "backend" },
+    { name: "Express.js", category: "backend" },
+    { name: "Python", category: "backend" },
+    { name: "PostgreSQL", category: "database" },
+    { name: "MySQL", category: "database" },
+    { name: "MongoDB", category: "database" },
+    { name: "Redis", category: "database" },
+    { name: "React", category: "frontend" },
+    { name: "TypeScript", category: "frontend" },
+    { name: "Bootstrap", category: "frontend" },
+    { name: "Tailwind CSS", category: "frontend" },
+    { name: "HTML", category: "frontend" },
+    { name: "AWS", category: "tools" },
+    { name: "Docker", category: "tools" },
+    { name: "Kubernetes", category: "tools" },
+    { name: "GraphQL", category: "tools" },
+    { name: "REST API", category: "tools" },
+    { name: "Postman", category: "tools" },
+    { name: "GitLab", category: "tools" },
+    { name: "Windows", category: "tools" },
+  ];
 
   // Filter tech icons based on active filter
   const filteredTechIcons = techIcons.filter(tech => 
@@ -151,9 +112,9 @@ export default function Home() {
           className="fixed top-6 right-6 z-50 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-3 hover:bg-white/20 transition-all duration-300"
         >
           {isMenuOpen ? (
-            <FaTimes className="w-6 h-6" />
+            <span className="text-xl">✕</span>
           ) : (
-            <FaBars className="w-6 h-6" />
+            <span className="text-xl">☰</span>
           )}
         </button>
 
@@ -199,7 +160,7 @@ export default function Home() {
               </div>
 
               {/* Quick Skills Overview */}
-       
+           
 
               <div>
                 <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Work</h3>
@@ -224,7 +185,7 @@ export default function Home() {
                     onClick={() => setIsMenuOpen(false)}
                     className="flex items-center gap-2 text-gray-800 hover:text-gray-900 transition duration-300 py-1"
                   >
-                    <FaGithub className="w-4 h-4" />
+                    <span>📂</span>
                     GitHub
                   </a>
                   <a 
@@ -234,7 +195,7 @@ export default function Home() {
                     onClick={() => setIsMenuOpen(false)}
                     className="flex items-center gap-2 text-gray-800 hover:text-blue-700 transition duration-300 py-1"
                   >
-                    <FaLinkedin className="w-4 h-4" />
+                    <span>💼</span>
                     LinkedIn
                   </a>
                   <a 
@@ -242,7 +203,7 @@ export default function Home() {
                     onClick={() => setIsMenuOpen(false)}
                     className="flex items-center gap-2 text-gray-800 hover:text-red-600 transition duration-300 py-1"
                   >
-                    <FaEnvelope className="w-4 h-4" />
+                    <span>📧</span>
                     Gmail
                   </a>
                 </div>
@@ -265,9 +226,7 @@ export default function Home() {
                     </>
                   ) : (
                     <>
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
+                      <span>📄</span>
                       Download Resume
                     </>
                   )}
@@ -277,11 +236,12 @@ export default function Home() {
           </div>
         )}
 
+        {/* Hero Content */}
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
             <div className="flex-1">
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
-                <h1 className="text-4xl sm:text-5xl font-bold">Hey There, I'm Jones</h1>
+                <h1 className="text-4xl sm:text-5xl font-bold">Hey There, I'm Rampradeep K</h1>
               </div>
               <p className="text-xl text-gray-300 mb-4">Backend Developer & API Specialist</p>
               <p className="text-lg text-gray-400 mb-6 max-w-2xl">
@@ -311,10 +271,10 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProjects.map((project) => (
-              <Link
+              <div
                 key={project.id}
-                href={`/projects/${project.id}`}
-                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 cursor-pointer"
+                onClick={() => window.location.href = `/projects/${project.id}`}
               >
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{project.title}</h3>
@@ -336,7 +296,7 @@ export default function Home() {
                     View Case Study →
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -402,23 +362,20 @@ export default function Home() {
           </div>
 
           {/* Skills Grid */}
-          <div className="grid grid-cols-2 items-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {filteredTechIcons.map((tech, index) => {
-              const IconComponent = tech.icon;
-              return (
-                <div
-                  key={index}
-                  className="group flex flex-col items-center p-6 rounded-2xl bg-white hover:bg-gradient-to-br hover:from-white hover:to-gray-50 transition-all duration-300 transform hover:-translate-y-2 shadow-sm hover:shadow-xl border border-gray-100 hover:border-gray-200"
-                >
-                  <div className={`text-4xl mb-4 ${tech.color} group-hover:scale-110 transition-transform duration-300`}>
-                    <IconComponent />
-                  </div>
-                  <span className="text-sm font-semibold text-gray-800 text-center group-hover:text-gray-900 transition-colors duration-300">
-                    {tech.name}
-                  </span>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            {filteredTechIcons.map((tech, index) => (
+              <div
+                key={index}
+                className="group flex flex-col items-center p-6 rounded-2xl bg-white hover:bg-gradient-to-br hover:from-white hover:to-gray-50 transition-all duration-300 transform hover:-translate-y-2 shadow-sm hover:shadow-xl border border-gray-100 hover:border-gray-200"
+              >
+                <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-2xl font-bold text-blue-600 mb-4 group-hover:scale-110 transition-transform duration-300">
+                  {tech.name.charAt(0)}
                 </div>
-              );
-            })}
+                <span className="text-sm font-semibold text-gray-800 text-center group-hover:text-gray-900 transition-colors duration-300">
+                  {tech.name}
+                </span>
+              </div>
+            ))}
           </div>
 
           {/* Empty State */}
@@ -453,14 +410,14 @@ export default function Home() {
             <div className="bg-white p-8 rounded-xl shadow-lg">
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">Web Developer</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">Full Stack Developer</h3>
                   <p className="text-lg text-green-600">Startup Ventures</p>
                 </div>
                 <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold mt-2 sm:mt-0">2022 - 2023</span>
               </div>
               <p className="text-gray-700 leading-relaxed">
                 Built end-to-end web applications using React and Node.js. Designed and implemented 
-                database schemas and optimized backend performance.
+                database schemas, optimized backend performance, and deployed applications on AWS cloud infrastructure.
               </p>
             </div>
           </div>
@@ -470,7 +427,7 @@ export default function Home() {
       {/* Contact CTA */}
       <section id="contact" className="py-20 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
         <div className="container mx-auto px-6 text-center">
-          {/* <h2 className="text-4xl font-bold mb-6">Ready to Build Something Amazing?</h2> */}
+          <h2 className="text-4xl font-bold mb-6">Ready to Build Something Amazing?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Let's discuss your project and how I can help bring your ideas to life with robust backend solutions.
           </p>

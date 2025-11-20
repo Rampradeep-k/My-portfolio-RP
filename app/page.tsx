@@ -8,23 +8,23 @@ const techIcons = [
   // Backend
   { name: "Node.js", label: "Node", color: "text-green-600", category: "backend" },
   { name: "Express.js", label: "Express", color: "text-gray-600", category: "backend" },
-  
+
   // Databases
   { name: "PostgreSQL", label: "PostgreSQL", color: "text-blue-700", category: "database" },
   { name: "MySQL", label: "MySQL", color: "text-blue-600", category: "database" },
   { name: "Redis", label: "Redis", color: "text-red-600", category: "backend" },
-  
+
   // Frontend
   { name: "React", label: "React", color: "text-blue-500", category: "frontend" },
   { name: "TypeScript", label: "TypeScript", color: "text-blue-700", category: "frontend" },
   { name: "Bootstrap", label: "Bootstrap", color: "text-purple-600", category: "frontend" },
   { name: "Tailwind CSS", label: "Tailwind", color: "text-cyan-500", category: "frontend" },
   { name: "HTML", label: "HTML", color: "text-orange-600", category: "frontend" },
-  
+
   // Tools & Cloud
   { name: "REST API", label: "REST API", color: "text-purple-600", category: "backend" },
   { name: "Postman", label: "Postman", color: "text-orange-600", category: "tools" },
-  
+
   // Version Control & OS
   { name: "GitLab", label: "GitLab", color: "text-orange-600", category: "tools" },
   { name: "Windows", label: "Windows", color: "text-blue-600", category: "tools" },
@@ -37,11 +37,10 @@ export default function Home() {
   const menuRef = useRef<HTMLDivElement>(null);
 
   // Filter tech icons based on active filter
-  const filteredTechIcons = techIcons.filter(tech => 
+  const filteredTechIcons = techIcons.filter(tech =>
     activeFilter === 'all' || tech.category === activeFilter
   );
 
-  // Featured projects - brief overview
   const featuredProjects = [
     {
       id: 'ecommerce-api',
@@ -80,7 +79,7 @@ export default function Home() {
   const handleFilterChange = (filter: 'all' | 'backend' | 'frontend' | 'database' | 'tools') => {
     setActiveFilter(filter);
     setIsMenuOpen(false);
-    
+
     // Scroll to skills section
     const skillsSection = document.getElementById('skills');
     if (skillsSection) {
@@ -129,31 +128,31 @@ export default function Home() {
               <div>
                 <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Skills Filter</h3>
                 <div className="space-y-1">
-                  <button 
+                  <button
                     onClick={() => handleFilterChange('backend')}
                     className="block w-full text-left text-gray-800 hover:text-blue-600 transition duration-300 py-1"
                   >
                     Backend Technologies
                   </button>
-                  <button 
+                  <button
                     onClick={() => handleFilterChange('frontend')}
                     className="block w-full text-left text-gray-800 hover:text-blue-600 transition duration-300 py-1"
                   >
                     Frontend Technologies
                   </button>
-                  <button 
+                  <button
                     onClick={() => handleFilterChange('database')}
                     className="block w-full text-left text-gray-800 hover:text-blue-600 transition duration-300 py-1"
                   >
                     Databases
                   </button>
-                  <button 
+                  <button
                     onClick={() => handleFilterChange('tools')}
                     className="block w-full text-left text-gray-800 hover:text-blue-600 transition duration-300 py-1"
                   >
                     Tools & Others
                   </button>
-                  <button 
+                  <button
                     onClick={() => handleFilterChange('all')}
                     className="block w-full text-left text-gray-800 hover:text-blue-600 transition duration-300 py-1"
                   >
@@ -178,9 +177,9 @@ export default function Home() {
               <div>
                 <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Connect</h3>
                 <div className="space-y-1">
-                  <a 
-                    href="https://github.com/yourusername" 
-                    target="_blank" 
+                  <a
+                    href="https://github.com/yourusername"
+                    target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsMenuOpen(false)}
                     className="flex items-center gap-2 text-gray-800 hover:text-gray-900 transition duration-300 py-1"
@@ -188,9 +187,9 @@ export default function Home() {
                     <span>🔗</span>
                     GitHub
                   </a>
-                  <a 
-                    href="https://linkedin.com/in/yourusername" 
-                    target="_blank" 
+                  <a
+                    href="https://linkedin.com/in/yourusername"
+                    target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsMenuOpen(false)}
                     className="flex items-center gap-2 text-gray-800 hover:text-blue-700 transition duration-300 py-1"
@@ -198,7 +197,7 @@ export default function Home() {
                     <span>🔗</span>
                     LinkedIn
                   </a>
-                  <a 
+                  <a
                     href="mailto:benjian1@gmail.com"
                     onClick={() => setIsMenuOpen(false)}
                     className="flex items-center gap-2 text-gray-800 hover:text-red-600 transition duration-300 py-1"
@@ -265,15 +264,14 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">Featured Projects</h2>
           <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            Here are some of my recent backend development projects. Click on any project to see the full case study.
+            Here are some of my recent backend development projects.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProjects.map((project) => (
-              <Link
+              <div
                 key={project.id}
-                href={`/projects/${project.id}`}
-                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+                className="bg-white rounded-xl shadow-lg border border-gray-100"
               >
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{project.title}</h3>
@@ -291,11 +289,11 @@ export default function Home() {
                     🎯 {project.results}
                   </div>
 
-                  <div className="mt-4 text-blue-600 font-semibold flex items-center gap-2">
-                    View Case Study →
+                  <div className="mt-4 text-gray-500 font-semibold flex items-center gap-2">
+                    Case Study Coming Soon
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -305,56 +303,51 @@ export default function Home() {
       <section id="skills" className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">Technical Skills</h2>
-          
+
           {/* Filter Buttons */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
             <button
               onClick={() => setActiveFilter('all')}
-              className={`px-5 py-2 rounded-full font-semibold transition duration-300 ${
-                activeFilter === 'all' 
-                  ? 'bg-blue-600 text-white' 
+              className={`px-5 py-2 rounded-full font-semibold transition duration-300 ${activeFilter === 'all'
+                  ? 'bg-blue-600 text-white'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
+                }`}
             >
               All Technologies
             </button>
             <button
               onClick={() => setActiveFilter('backend')}
-              className={`px-5 py-2 rounded-full font-semibold transition duration-300 ${
-                activeFilter === 'backend' 
-                  ? 'bg-green-600 text-white' 
+              className={`px-5 py-2 rounded-full font-semibold transition duration-300 ${activeFilter === 'backend'
+                  ? 'bg-green-600 text-white'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
+                }`}
             >
               Backend
             </button>
             <button
               onClick={() => setActiveFilter('frontend')}
-              className={`px-5 py-2 rounded-full font-semibold transition duration-300 ${
-                activeFilter === 'frontend' 
-                  ? 'bg-blue-500 text-white' 
+              className={`px-5 py-2 rounded-full font-semibold transition duration-300 ${activeFilter === 'frontend'
+                  ? 'bg-blue-500 text-white'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
+                }`}
             >
               Frontend
             </button>
             <button
               onClick={() => setActiveFilter('database')}
-              className={`px-5 py-2 rounded-full font-semibold transition duration-300 ${
-                activeFilter === 'database' 
-                  ? 'bg-purple-600 text-white' 
+              className={`px-5 py-2 rounded-full font-semibold transition duration-300 ${activeFilter === 'database'
+                  ? 'bg-purple-600 text-white'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
+                }`}
             >
               Databases
             </button>
             <button
               onClick={() => setActiveFilter('tools')}
-              className={`px-5 py-2 rounded-full font-semibold transition duration-300 ${
-                activeFilter === 'tools' 
-                  ? 'bg-orange-500 text-white' 
+              className={`px-5 py-2 rounded-full font-semibold transition duration-300 ${activeFilter === 'tools'
+                  ? 'bg-orange-500 text-white'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
+                }`}
             >
               Tools & Others
             </button>
@@ -400,8 +393,8 @@ export default function Home() {
                 <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mt-2 sm:mt-0">2023 - Present</span>
               </div>
               <p className="text-gray-700 leading-relaxed">
-                Developed scalable microservices architecture and RESTful APIs serving 10,000+ daily users. 
-                Implemented database optimization strategies that improved query performance by 40% and 
+                Developed scalable microservices architecture and RESTful APIs serving 10,000+ daily users.
+                Implemented database optimization strategies that improved query performance by 40% and
                 reduced server response time by 60%.
               </p>
             </div>
@@ -415,7 +408,7 @@ export default function Home() {
                 <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold mt-2 sm:mt-0">2022 - 2023</span>
               </div>
               <p className="text-gray-700 leading-relaxed">
-                Built end-to-end web applications using React and Node.js. Designed and implemented 
+                Built end-to-end web applications using React and Node.js. Designed and implemented
                 database schemas and optimized backend performance.
               </p>
             </div>
